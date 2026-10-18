@@ -1,4 +1,4 @@
-const ROOT=new URL('./',self.registration.scope),CACHE='sumi-'+ROOT.pathname+'-1c8ed5a929869c87';
+const ROOT=new URL('./',self.registration.scope),CACHE='sumi-'+ROOT.pathname+'-505fbf3ea072755c';
 const appURL=p=>new URL(p,ROOT).href;
 self.addEventListener('install',e=>e.waitUntil((async()=>{const c=await caches.open(CACHE);await c.addAll(['manifest.webmanifest','favicon.svg','icon-192.png','icon-512.png'].map(appURL));const r=await fetch(ROOT,{cache:'reload'});if(r.ok&&!r.redirected&&(await r.clone().text()).includes('data-sumi-app'))await c.put(ROOT.href,r);})()));
 self.addEventListener('activate',e=>e.waitUntil((async()=>{for(const k of await caches.keys())if(k.startsWith('sumi-'+ROOT.pathname+'-')&&k!==CACHE)await caches.delete(k);await self.clients.claim();})()));
