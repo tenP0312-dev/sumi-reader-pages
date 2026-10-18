@@ -1,4 +1,4 @@
-name: Publish Sumi
+name: Publish ITM
 on:
   push:
     branches: [main]
